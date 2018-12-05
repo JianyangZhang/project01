@@ -1,0 +1,26 @@
+<div>
+    <div id="chart1" style="width:350px; height:350px;"></div>
+</div>
+<script>
+    /* 直方图 */
+    var myChart = echarts.init(document.getElementById('chart1'));
+    var option = {
+        title: {
+            text: '直方图样例'
+        },
+        tooltip: {},
+        legend: {
+            data: ['数据']
+        },
+        xAxis: {
+            data: ["项目1", "项目2", "项目3", "项目4", "项目5", "项目6"]
+        },
+        yAxis: {},
+        series: [{
+            name: '数据',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+        }]
+    };
+    myChart.setOption(option);
+</script>
