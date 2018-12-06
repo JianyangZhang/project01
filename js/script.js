@@ -15,7 +15,7 @@ window.onload = function () {
 
     $("#tag_overview").click();
 
-    $("#tag_overview").click(function () {
+    $("#create_tag").click(function () {
         $("#dashboard_main").load("./pages/page2.html");
     });
 
