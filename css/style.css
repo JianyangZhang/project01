@@ -5,10 +5,11 @@
 }
 
 body {
-    background: #f0f0f0;
+    background: #F8F9FB;
 }
 
 .content {
+    width:1000;
     margin-left: 250px;
     margin-top: 10px;
 }
@@ -38,5 +39,5 @@ body {
     left: 10px;
     width: 225px;
     float: left;
-    box-shadow: 0 5px 20px #333;
+    box-shadow: 3px 3px 10px gray;
 }

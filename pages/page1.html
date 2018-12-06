@@ -1,26 +1,282 @@
-<div>
-    <div id="chart1" style="width:350px; height:350px;"></div>
+<div id="dashboard_title" class="row">
+    <div><b>基本业务指标</b></div>
+</div>
+<div id="row1" class="row">
+    <div class="col-lg-3 col-sm-6 col-xs-6">
+        <div class="row1_chart the_chart">
+            <div style="font-size: 15px;">DAU</div>
+            <div style="font-size: 10px;color: #939DA7">更新时间：<span class="update_time"></span></div>
+            <div class="row1_number">23,419</div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-xs-6">
+        <div class="row1_chart the_chart">
+            <div style="font-size: 15px;">近30日查看账户余额用户</div>
+            <div style="font-size: 10px;color: #939DA7">更新时间：<span class="update_time"></span></div>
+            <div class="row1_number">12,912</div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-xs-6">
+        <div class="row1_chart the_chart">
+            <div style="font-size: 15px;">近30日完成开户用户</div>
+            <div style="font-size: 10px;color: #939DA7">更新时间：<span class="update_time"></span></div>
+            <div class="row1_number">9612</div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-xs-6">
+        <div class="row1_chart the_chart">
+            <div style="font-size: 15px;">近30日动账用户</div>
+            <div style="font-size: 10px;color: #939DA7">更新时间：<span class="update_time"></span></div>
+            <div class="row1_number">6623</div>
+        </div>
+    </div>
+</div>
+<div id="row2" class="row">
+    <div class="col-lg-6 col-sm-12 col-xs-12">
+        <div id="chart1" class="the_chart"></div>
+    </div>
+    <div class="col-lg-6 col-sm-12 col-xs-12">
+        <div id="chart2" class="the_chart"></div>
+    </div>
 </div>
 <script>
-    /* 直方图 */
-    var myChart = echarts.init(document.getElementById('chart1'));
-    var option = {
-        title: {
-            text: '直方图样例'
+    /* chart1 */
+    var myChart1 = echarts.init(document.getElementById('chart1'));
+    var option1 = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            }
         },
-        tooltip: {},
         legend: {
-            data: ['数据']
+            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎', '百度', '谷歌', '必应', '其他']
         },
-        xAxis: {
-            data: ["项目1", "项目2", "项目3", "项目4", "项目5", "项目6"]
+        grid: {
+            top: '15%',
+            left: '3%',
+            right: '5%',
+            bottom: '5%',
+            containLabel: true
         },
-        yAxis: {},
-        series: [{
-            name: '数据',
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
-        }]
+        xAxis: [
+            {
+                type: 'category',
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value'
+            }
+        ],
+        series: [
+            {
+                name: '直接访问',
+                type: 'bar',
+                data: [320, 332, 301, 334, 390, 330, 320]
+            },
+            {
+                name: '邮件营销',
+                type: 'bar',
+                stack: '广告',
+                data: [120, 132, 101, 134, 90, 230, 210]
+            },
+            {
+                name: '联盟广告',
+                type: 'bar',
+                stack: '广告',
+                data: [220, 182, 191, 234, 290, 330, 310]
+            },
+            {
+                name: '视频广告',
+                type: 'bar',
+                stack: '广告',
+                data: [150, 232, 201, 154, 190, 330, 410]
+            },
+            {
+                name: '搜索引擎',
+                type: 'bar',
+                data: [862, 1018, 964, 1026, 1679, 1600, 1570],
+                markLine: {
+                    lineStyle: {
+                        normal: {
+                            type: 'dashed'
+                        }
+                    },
+                    data: [
+                        [{ type: 'min' }, { type: 'max' }]
+                    ]
+                }
+            },
+            {
+                name: '百度',
+                type: 'bar',
+                barWidth: 5,
+                stack: '搜索引擎',
+                data: [620, 732, 701, 734, 1090, 1130, 1120]
+            },
+            {
+                name: '谷歌',
+                type: 'bar',
+                stack: '搜索引擎',
+                data: [120, 132, 101, 134, 290, 230, 220]
+            },
+            {
+                name: '必应',
+                type: 'bar',
+                stack: '搜索引擎',
+                data: [60, 72, 71, 74, 190, 130, 110]
+            },
+            {
+                name: '其他',
+                type: 'bar',
+                stack: '搜索引擎',
+                data: [62, 82, 91, 84, 109, 110, 120]
+            }
+        ]
     };
-    myChart.setOption(option);
+    myChart1.setOption(option1);
+
+    /* chart2 */
+    var myChart2 = echarts.init(document.getElementById('chart2'));
+    var option2 = {
+        title: {
+            text: ''
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    backgroundColor: '#6a7985'
+                }
+            }
+        },
+        legend: {
+            data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
+        },
+        grid: {
+            top: '15%',
+            left: '3%',
+            right: '5%',
+            bottom: '5%',
+            containLabel: true
+        },
+        xAxis: [
+            {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value'
+            }
+        ],
+        series: [
+            {
+                name: '邮件营销',
+                type: 'line',
+                stack: '总量',
+                areaStyle: {},
+                data: [120, 132, 101, 134, 90, 230, 210]
+            },
+            {
+                name: '联盟广告',
+                type: 'line',
+                stack: '总量',
+                areaStyle: {},
+                data: [220, 182, 191, 234, 290, 330, 310]
+            },
+            {
+                name: '视频广告',
+                type: 'line',
+                stack: '总量',
+                areaStyle: {},
+                data: [150, 232, 201, 154, 190, 330, 410]
+            },
+            {
+                name: '直接访问',
+                type: 'line',
+                stack: '总量',
+                areaStyle: { normal: {} },
+                data: [320, 332, 301, 334, 390, 330, 320]
+            },
+            {
+                name: '搜索引擎',
+                type: 'line',
+                stack: '总量',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'top'
+                    }
+                },
+                areaStyle: { normal: {} },
+                data: [820, 932, 901, 934, 1290, 1330, 1320]
+            }
+        ]
+    };
+    myChart2.setOption(option2);
+    /*---------------------*/
+    $(".update_time").text(function () {
+        var time = new Date();
+        var m = time.getMonth() + 1;
+        var t = time.getFullYear() + "-" + m + "-"
+            + time.getDate() + " " + time.getHours() + ":"
+            + time.getMinutes() + ":" + time.getSeconds();
+        return t;
+    });
 </script>
+
+<style type="text/css">
+    .row1_chart {
+        padding-top: 12px;
+        padding-bottom: 15px;
+        padding-left: 20px;
+    }
+
+    .row1_number {
+        padding-top: 8px;
+        padding-right: 20px;
+        font-size: 23px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    #chart1,
+    #chart2 {
+        width: 510px;
+        height: 500px;
+    }
+
+    .the_chart {
+        background-color: #FFFFFF;
+        box-shadow: 0px 0px 2px gray;
+        border-radius: 3px;
+    }
+
+    .the_chart:hover {
+        box-shadow: 0px 0px 8px gray;
+    }
+
+    #dashboard_title {
+        padding-top: 10px;
+        padding-bottom: 20px;
+        margin-left: 10px;
+        font-size: 18px;
+    }
+
+    #row1 {
+        padding-bottom: 20px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    #row2 {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+</style>
