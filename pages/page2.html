@@ -7,7 +7,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-sm">自定义标签名</span>
             </div>
-            <input type="text" class="form-control" aria-label="..." aria-describedby="inputGroup-sizing-sm" />
+            <input type="text" class="form-control" aria-label="" aria-describedby="inputGroup-sizing-sm" />
         </div>
     </div>
     <div class="col-lg-1">
@@ -46,6 +46,55 @@
     </form>
 </div>
 <label style="margin-left: 10px; margin-top:10px; color: darkgray; font-size: 13px; "><b>用户行为满足：</b></label>
+<div class="row" id="row4" style="margin-left: 10px;">
+    <div class="input-group input-group-sm">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">从</span>
+        </div>
+        <input type="text" class="col-lg-2 form-control jeinput start_time" placeholder="选择起始日期">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">至</span>
+        </div>
+        <input type="text" class="col-lg-2 form-control jeinput end_time" placeholder="选择结束日期">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">做过</span>
+        </div>
+        <select class="col-lg-2 form-control form-control-sm" id="user_activities">
+            <option>行为1</option>
+            <option>行为2</option>
+            <option>行为3</option>
+        </select>
+        <select class="col-lg-1 form-control form-control-sm" id="user_pretimes">
+            <option>至少</option>
+            <option>至多</option>
+            <option>等于</option>
+        </select>
+        <input type="text" class="col-lg-1 form-control form-control-sm" aria-label="" aria-describedby="" />
+        <div class="input-group-append">
+            <span class="input-group-text">次</span>
+        </div>
+        <button style="margin-left:10px;" type="button" class="btn btn-sm btn-outline-danger">删除</button>
+    </div>
+
+</div>
+<script>   
+    $(function () {
+        jeDate(".start_time", {
+            theme: { bgcolor: "#4A89DC", color: "#ffffff", pnColor: "#3E96F9" },
+            format: "YYYY-MM-DD",
+            isTime: false,
+            minDate: "2017-06-01 00:00:00"
+        })
+    });
+    $(function () {
+        jeDate(".end_time", {
+            theme: { bgcolor: "#4A89DC", color: "#ffffff", pnColor: "#3E96F9" },
+            format: "YYYY-MM-DD",
+            isTime: false,
+            minDate: "2017-06-01 00:00:00"
+        })
+    }); 
+</script>
 <style type="text/css ">
     #row1,
     #row2,
