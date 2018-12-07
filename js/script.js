@@ -19,6 +19,7 @@ window.onload = function () {
         $("#dashboard_main").load("./pages/page2.html");
     });
 
+    $("#create_tag").click();
 
 
 

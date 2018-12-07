@@ -2,9 +2,54 @@
     <div><b>创建标签</b></div>
 </div>
 <div id="row1" class="row">
-    
+    <div class="col-lg-6">
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">自定义标签名</span>
+            </div>
+            <input type="text" class="form-control" aria-label="..." aria-describedby="inputGroup-sizing-sm" />
+        </div>
+    </div>
+    <div class="col-lg-1">
+        <input class="btn btn-sm btn-dark" type="submit" value="提交" style="font-weight:bold;" />
+    </div>
 </div>
-
-<style type="text/css">
-
+<div id="row2" class="row">
+    <div class="col">
+        <button type="button" class="btn btn-sm btn-success"><b>添加用户属性</b></button>
+    </div>
+</div>
+<label style="margin-left: 10px; margin-top:10px; color: darkgray; font-size: 13px;"><b>用户属性满足：</b></label>
+<div id="row3" class="row" style="margin-left: 10px;">
+    <form class="form-inline">
+        <div class="form-group" style="margin-right: 10px">
+            <select class="form-control form-control-sm" id="user_properties">
+                <option>活期余额</option>
+                <option>定期余额</option>
+                <option>基金余额</option>
+                <option>账户总资产</option>
+            </select>
+        </div>
+        <div class="form-group" style="margin-right: 10px">
+            <select class="form-control form-control-sm" id="user_qualifier">
+                <option>大于</option>
+                <option>小于</option>
+                <option>等于</option>
+            </select>
+        </div>
+        <div class="form-group" style="margin-right: 10px">
+            <input type="text" class="form-control form-control-sm" id="user_value" aria-describedby="" placeholder="">
+        </div>
+        <div class="form-group" style="margin-right: 10px">
+            <button type="button" class="btn btn-sm btn-outline-danger">删除</button>
+        </div>
+    </form>
+</div>
+<label style="margin-left: 10px; margin-top:10px; color: darkgray; font-size: 13px; "><b>用户行为满足：</b></label>
+<style type="text/css ">
+    #row1,
+    #row2,
+        {
+        margin-left: 0px;
+    }
 </style>
