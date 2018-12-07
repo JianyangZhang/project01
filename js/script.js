@@ -6,7 +6,7 @@ window.onload = function () {
             $("#demo-list li.active").removeClass("active")
             $(this).addClass("active");
         })
-    })
+    });
     /* ------------------------------------------------------ */
 
     $("#tag_overview").click(function () {
