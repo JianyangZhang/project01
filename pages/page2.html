@@ -15,72 +15,85 @@
     </div>
 </div>
 <div id="row2" class="row">
-    <div class="col">
-        <button type="button" class="btn btn-sm btn-success"><b>添加用户属性</b></button>
+    <div class="col-lg-1">
+        <button id="add_user" type="button" class="btn btn-sm btn-success"><b>+ 用户属性</b></button>
+    </div>
+    <div class="col-lg-1">
+        <button id="add_activity" type="button" class="btn btn-sm btn-primary"><b>+ 用户行为</b></button>
     </div>
 </div>
 <label style="margin-left: 10px; margin-top:10px; color: darkgray; font-size: 13px;"><b>用户属性满足：</b></label>
-<div id="row3" class="row" style="margin-left: 10px;">
-    <form class="form-inline">
-        <div class="form-group" style="margin-right: 10px">
-            <select class="form-control form-control-sm" id="user_properties">
-                <option>活期余额</option>
-                <option>定期余额</option>
-                <option>基金余额</option>
-                <option>账户总资产</option>
-            </select>
-        </div>
-        <div class="form-group" style="margin-right: 10px">
-            <select class="form-control form-control-sm" id="user_qualifier">
-                <option>大于</option>
-                <option>小于</option>
-                <option>等于</option>
-            </select>
-        </div>
-        <div class="form-group" style="margin-right: 10px">
-            <input type="text" class="form-control form-control-sm" id="user_value" aria-describedby="" placeholder="">
-        </div>
-        <div class="form-group" style="margin-right: 10px">
-            <button type="button" class="btn btn-sm btn-outline-danger">删除</button>
-        </div>
-    </form>
+<div id="user_panel">
+    <div id="userRow_1" class="row" style="margin-left: 10px; margin-bottom: 5px;">
+        <form class="form-inline">
+            <div class="form-group" style="margin-right: 10px">
+                <select class="form-control form-control-sm" placeholder="属性名" id="user_properties">
+                    <option>全部用户</option>
+                    <option>活期余额</option>
+                    <option>定期余额</option>
+                    <option>基金余额</option>
+                    <option>账户总资产</option>
+                </select>
+            </div>
+            <div class="form-group" style="margin-right: 10px">
+                <select class="form-control form-control-sm" id="user_qualifier">
+                    <option>无限定</option>
+                    <option>大于</option>
+                    <option>小于</option>
+                    <option>等于</option>
+                    <option>大于等于</option>
+                    <option>小于等于</option>
+                </select>
+            </div>
+            <div class="form-group" style="margin-right: 10px">
+                <input type="text" class="form-control form-control-sm" id="user_value" aria-describedby="" placeholder="">
+            </div>
+            <div class="form-group" style="margin-right: 10px">
+                <button type="button" onclick="user_delete(this)" class="btn btn-sm btn-outline-danger user_delete_button" disabled>删除</button>
+            </div>
+        </form>
+    </div>
 </div>
 <label style="margin-left: 10px; margin-top:10px; color: darkgray; font-size: 13px; "><b>用户行为满足：</b></label>
-<div class="row" id="row4" style="margin-left: 10px;">
-    <div class="input-group input-group-sm">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm">从</span>
+<div id="active_panel">
+    <div id="activeRow_1" class="row" style="margin-left: 10px; margin-bottom: 5px;">
+        <div class="input-group input-group-sm">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">从</span>
+            </div>
+            <input id="active_start_time" type="text" class="col-lg-2 form-control jeinput start_time" placeholder="选择起始日期">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">至</span>
+            </div>
+            <input id="active_end_time" type="text" class="col-lg-2 form-control jeinput end_time" placeholder="选择结束日期">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">做过</span>
+            </div>
+            <select class="col-lg-2 form-control form-control-sm" id="active_properties">
+                <option>所有行为</option>
+                <option>行为1</option>
+                <option>行为2</option>
+                <option>行为3</option>
+            </select>
+            <select class="col-lg-1 form-control form-control-sm" id="active_qualifier">
+                <option>无限定</option>
+                <option>至少</option>
+                <option>至多</option>
+                <option>等于</option>
+            </select>
+            <input id="active_value" type="text" class="col-lg-1 form-control form-control-sm" aria-label="" aria-describedby="" />
+            <div class="input-group-append">
+                <span class="input-group-text">次</span>
+            </div>
+            <button style="margin-left:10px;" onclick="active_delete(this)" type="button" class="btn btn-sm btn-outline-danger active_delete_button"
+                disabled>删除</button>
         </div>
-        <input type="text" class="col-lg-2 form-control jeinput start_time" placeholder="选择起始日期">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm">至</span>
-        </div>
-        <input type="text" class="col-lg-2 form-control jeinput end_time" placeholder="选择结束日期">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm">做过</span>
-        </div>
-        <select class="col-lg-2 form-control form-control-sm" id="user_activities">
-            <option>行为1</option>
-            <option>行为2</option>
-            <option>行为3</option>
-        </select>
-        <select class="col-lg-1 form-control form-control-sm" id="user_pretimes">
-            <option>至少</option>
-            <option>至多</option>
-            <option>等于</option>
-        </select>
-        <input type="text" class="col-lg-1 form-control form-control-sm" aria-label="" aria-describedby="" />
-        <div class="input-group-append">
-            <span class="input-group-text">次</span>
-        </div>
-        <button style="margin-left:10px;" type="button" class="btn btn-sm btn-outline-danger">删除</button>
     </div>
-
 </div>
 <script>   
     $(function () {
         jeDate(".start_time", {
-            theme: { bgcolor: "#4A89DC", color: "#ffffff", pnColor: "#3E96F9" },
+            theme: { bgcolor: "#4A89DC", color: "#ffffff", pnColor: "#4A89DC" },
             format: "YYYY-MM-DD",
             isTime: false,
             minDate: "2017-06-01 00:00:00"
@@ -88,12 +101,39 @@
     });
     $(function () {
         jeDate(".end_time", {
-            theme: { bgcolor: "#4A89DC", color: "#ffffff", pnColor: "#3E96F9" },
+            theme: { bgcolor: "#4A89DC", color: "#ffffff", pnColor: "#4A89DC" },
             format: "YYYY-MM-DD",
             isTime: false,
             minDate: "2017-06-01 00:00:00"
         });
-    }); 
+    });
+    /*增加按钮逻辑*/
+    $("#add_user").click(function () {
+        var lastID = $("#user_panel>div").last().attr("id");
+        var newID = "userRow_" + (parseInt(lastID.split("_")[1]) + 1);
+        $("#" + lastID).clone().attr("id", newID).appendTo("#user_panel");
+        $("#user_panel .user_delete_button").removeAttr("disabled");
+    });
+    $("#add_activity").click(function () {
+        var lastID = $("#active_panel>div").last().attr("id");
+        var newID = "activeRow_" + (parseInt(lastID.split("_")[1]) + 1);
+        $("#" + lastID).clone().attr("id", newID).appendTo("#active_panel");
+        $("#active_panel .active_delete_button").removeAttr("disabled");
+    });
+
+    /*删除按钮逻辑*/
+    function user_delete(myself) {
+        $(myself).parent().parent().parent().remove();
+        if ($("#user_panel>div").length <= 1) {
+            $("#user_panel .user_delete_button").attr("disabled", "");
+        }
+    }
+    function active_delete(myself) {
+        $(myself).parent().parent().remove();
+        if ($("#active_panel>div").length <= 1) {
+            $("#active_panel .active_delete_button").attr("disabled", "");
+        }
+    }
 </script>
 <style type="text/css ">
     #row1,
