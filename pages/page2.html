@@ -61,11 +61,11 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-sm">从</span>
             </div>
-            <input id="active_start_time" type="text" class="col-lg-2 form-control jeinput start_time" placeholder="选择起始日期">
+            <input type="text" class="col-lg-2 form-control jeinput start_time" placeholder="选择起始日期">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-sm">至</span>
             </div>
-            <input id="active_end_time" type="text" class="col-lg-2 form-control jeinput end_time" placeholder="选择结束日期">
+            <input type="text" class="col-lg-2 form-control jeinput end_time" placeholder="选择结束日期">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-sm">做过</span>
             </div>
@@ -90,23 +90,8 @@
         </div>
     </div>
 </div>
-<script>   
-    $(function () {
-        jeDate(".start_time", {
-            theme: { bgcolor: "#4A89DC", color: "#ffffff", pnColor: "#4A89DC" },
-            format: "YYYY-MM-DD",
-            isTime: false,
-            minDate: "2017-06-01 00:00:00"
-        });
-    });
-    $(function () {
-        jeDate(".end_time", {
-            theme: { bgcolor: "#4A89DC", color: "#ffffff", pnColor: "#4A89DC" },
-            format: "YYYY-MM-DD",
-            isTime: false,
-            minDate: "2017-06-01 00:00:00"
-        });
-    });
+<script>
+    flushDateTool();
     /*增加按钮逻辑*/
     $("#add_user").click(function () {
         var lastID = $("#user_panel>div").last().attr("id");
@@ -119,6 +104,7 @@
         var newID = "activeRow_" + (parseInt(lastID.split("_")[1]) + 1);
         $("#" + lastID).clone().attr("id", newID).appendTo("#active_panel");
         $("#active_panel .active_delete_button").removeAttr("disabled");
+        flushDateTool();
     });
 
     /*删除按钮逻辑*/
@@ -133,6 +119,25 @@
         if ($("#active_panel>div").length <= 1) {
             $("#active_panel .active_delete_button").attr("disabled", "");
         }
+    }
+
+    function flushDateTool() {
+        $(".start_time").each(function () {
+            jeDate(this, {
+                theme: { bgcolor: "#4A89DC", color: "#ffffff", pnColor: "#4A89DC" },
+                format: "YYYY-MM-DD",
+                isTime: false,
+                minDate: "2017-06-01 00:00:00"
+            });
+        });
+        $(".end_time").each(function () {
+            jeDate(this, {
+                theme: { bgcolor: "#4A89DC", color: "#ffffff", pnColor: "#4A89DC" },
+                format: "YYYY-MM-DD",
+                isTime: false,
+                minDate: "2017-06-01 00:00:00"
+            });
+        });
     }
 </script>
 <style type="text/css ">
