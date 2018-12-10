@@ -7,11 +7,11 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-sm">自定义标签名</span>
             </div>
-            <input type="text" class="form-control" aria-label="" aria-describedby="inputGroup-sizing-sm" />
+            <input id="tag_name" type="text" class="form-control" aria-label="" aria-describedby="inputGroup-sizing-sm" />
         </div>
     </div>
     <div class="col-lg-1">
-        <input class="btn btn-sm btn-dark" type="submit" value="提交" style="font-weight:bold;" />
+        <input id="tag_submit" class="btn btn-sm btn-dark" type="submit" value="提交" style="font-weight:bold;" />
     </div>
 </div>
 <div id="row2" class="row">
@@ -138,6 +138,33 @@
                 minDate: "2017-06-01 00:00:00"
             });
         });
+    }
+    /*提交按钮*/
+    $("#tag_submit").click(function () {
+        var newTagName = $("#tag_name").val().trim();
+        if (newTagName == "") {
+            alert("标签名不能为空");
+            return;
+        }
+        if (hadSameTagName(newTagName)) {
+            alert("标签名不能重复");
+            return;
+        }
+        var newTags = store.get("tags");
+        newTags.push({ name: newTagName });
+        store.set("tags", newTags);
+        $("#tag_name").val("");
+        window.location.reload();
+    });
+
+    function hadSameTagName(newName) {
+        var tags = store.get("tags");
+        for (var i = 0; i < tags.length; i++) {
+            if (tags[i].name == newName) {
+                return true;
+            }
+        }
+        return false;
     }
 </script>
 <style type="text/css ">
