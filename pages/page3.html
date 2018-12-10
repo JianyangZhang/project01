@@ -1,6 +1,6 @@
 <div id="dashboard_title" class="row">
     <span style="font-weight: bold"></span>
-    <button style="margin-left: 30px;" onclick="deleteTag()" type="button" class="btn btn-sm btn-danger active_delete_button">删除标签</button>
+    <button style="margin-left: 30px;" onclick="deleteTag()" type="button" class="btn btn-sm btn-danger active_delete_button"><b>删除标签</b></button>
 </div>
 <div id="row1" class="row">
 
@@ -15,7 +15,7 @@
         var tags = store.get("tags");
         for (var i = 0; i < tags.length; i++) {
             if (tags[i].name == currentTag) {
-                tags.splice(i,1);
+                tags.splice(i, 1);
                 store.set("tags", tags);
                 break;
             }
