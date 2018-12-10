@@ -55,8 +55,8 @@
     </div>
 </div>
 <label style="margin-left: 10px; margin-top:10px; color: darkgray; font-size: 13px; "><b>用户行为满足：</b></label>
-<div id="active_panel">
-    <div id="activeRow_1" class="row" style="margin-left: 10px; margin-bottom: 5px;">
+<div id="activity_panel">
+    <div id="activityRow_1" class="row" style="margin-left: 10px; margin-bottom: 5px;">
         <div class="input-group input-group-sm">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-sm">从</span>
@@ -69,23 +69,23 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-sm">做过</span>
             </div>
-            <select class="col-lg-2 form-control form-control-sm" id="active_properties">
+            <select class="col-lg-2 form-control form-control-sm" id="activity_properties">
                 <option>所有行为</option>
                 <option>行为1</option>
                 <option>行为2</option>
                 <option>行为3</option>
             </select>
-            <select class="col-lg-1 form-control form-control-sm" id="active_qualifier">
+            <select class="col-lg-1 form-control form-control-sm" id="activity_qualifier">
                 <option>无限定</option>
                 <option>至少</option>
                 <option>至多</option>
                 <option>等于</option>
             </select>
-            <input id="active_value" type="text" class="col-lg-1 form-control form-control-sm" aria-label="" aria-describedby="" />
+            <input id="activity_value" type="text" class="col-lg-1 form-control form-control-sm" aria-label="" aria-describedby="" />
             <div class="input-group-append">
                 <span class="input-group-text">次</span>
             </div>
-            <button style="margin-left:10px;" onclick="active_delete(this)" type="button" class="btn btn-sm btn-outline-danger active_delete_button"
+            <button style="margin-left:10px;" onclick="activity_delete(this)" type="button" class="btn btn-sm btn-outline-danger activity_delete_button"
                 disabled>删除</button>
         </div>
     </div>
@@ -100,10 +100,10 @@
         $("#user_panel .user_delete_button").removeAttr("disabled");
     });
     $("#add_activity").click(function () {
-        var lastID = $("#active_panel>div").last().attr("id");
-        var newID = "activeRow_" + (parseInt(lastID.split("_")[1]) + 1);
-        $("#" + lastID).clone().attr("id", newID).appendTo("#active_panel");
-        $("#active_panel .active_delete_button").removeAttr("disabled");
+        var lastID = $("#activity_panel>div").last().attr("id");
+        var newID = "activityRow_" + (parseInt(lastID.split("_")[1]) + 1);
+        $("#" + lastID).clone().attr("id", newID).appendTo("#activity_panel");
+        $("#activity_panel .activity_delete_button").removeAttr("disabled");
         flushDateTool();
     });
 
@@ -114,10 +114,10 @@
             $("#user_panel .user_delete_button").attr("disabled", "");
         }
     }
-    function active_delete(myself) {
+    function activity_delete(myself) {
         $(myself).parent().parent().remove();
-        if ($("#active_panel>div").length <= 1) {
-            $("#active_panel .active_delete_button").attr("disabled", "");
+        if ($("#activity_panel>div").length <= 1) {
+            $("#activity_panel .activity_delete_button").attr("disabled", "");
         }
     }
 
