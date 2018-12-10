@@ -1,15 +1,28 @@
 <div id="dashboard_title" class="row">
-    <div style="font-weight: bold"></div>
+    <span style="font-weight: bold"></span>
+    <button style="margin-left: 30px;" onclick="deleteTag()" type="button" class="btn btn-sm btn-danger active_delete_button">删除标签</button>
 </div>
 <div id="row1" class="row">
-    
+
 </div>
 <div id="row2" class="row">
-   
+
 </div>
 
 <script>
-    $("#dashboard_title div").text("标签名：" + currentTag);
+    $("#dashboard_title span").text("标签名：" + currentTag);
+    function deleteTag() {
+        var tags = store.get("tags");
+        for (var i = 0; i < tags.length; i++) {
+            if (tags[i].name == currentTag) {
+                tags.splice(i,1);
+                store.set("tags", tags);
+                break;
+            }
+        }
+        store.set("lastLocation", "tag_overview");
+        window.location.reload();
+    }
 </script>
 <style type="text/css ">
     #row1,

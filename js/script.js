@@ -16,7 +16,7 @@ window.onload = function () {
     });
 
     $(".defined_tag").click(function () {
-        store.set("lastLocation", "tag_overview");
+        store.set("lastLocation", "create_tag");
         currentTag = $(this).attr("id");
         $("#dashboard_main").load("./pages/page3.html");
     });
